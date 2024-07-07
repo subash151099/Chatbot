@@ -1,0 +1,38 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Upload Excel File</title>
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+</head>
+<body>
+
+    <h2>Hi, {{username}}</h2>
+    <a href="{{ url_for('static', filename='files/BOT_KEYWORDS.xlsx') }}" download class="btn">Download Excel</a>
+
+    <h1>Upload Excel File</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xls,.xlsx">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

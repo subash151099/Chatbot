@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Dashboard with Fixed Navbar{% endblock %}</title>
+  <title>Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!------------------------------------------------------------------->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+
+<!------------------------------------------------------------------->
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styles for navbar */
+    .main-content {
+    margin-top: 60px; /* Adjust according to navbar height */
+    padding: 20px;
+    }
+    .avatar{
+      height: 40px;
+      width: 40px;
+      border-radius: 50%; /* Make avatar image round */
+      margin-right: 10px;
+    }
+    .admin_name{
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <!-- Admin Avatar and Name -->
+    <div class="d-flex align-items-center">
+      <img src="{{ url_for('static', filename='avatars/admin_avatar.png') }}" alt="Admin Avatar" class="avatar">
+      <h5 class="admin_name">{{ username }}</h5>
+    </div>
+    <!-- Toggler button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('dashboard') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('news_updation') }}">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('botkeyword_updation') }}">Keyword</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact_updation') }}">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('leave_calendar') }}">Calendar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profile_updation') }}">Profile</a>
+            </li>
+            <!-- Logout button with icon -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">
+                Logout <i class="fas fa-sign-out-alt"></i>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Main Page (Master) -->
+<div class="main-content container">
+  <!-- Main content will be loaded dynamically here -->
+  {% block content %}
+
+    <h1>Hi, {{username}}</h1>
+    <p>Welcome to Dashboard - dear, {{username}}</p>
+  
+  {% endblock %}
+</div>
+
+<!-- Bootstrap JS Bundle (Popper.js included) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
